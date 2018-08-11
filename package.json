@@ -1,0 +1,19 @@
+{
+  "name": "swagger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "docsify-cli": "^4.2.1",
+    "docsify-server-renderer": "^4.7.0",
+    "express": "^4.16.3",
+    "nodemon": "^1.18.3",
+    "swagger-ui-express": "^3.0.10"
+  }
+}

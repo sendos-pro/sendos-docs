@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+  <meta name="description" content="">
+  <title>Помощь SMTP.BZ</title>
+
+  <!-- Icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,500,500i,700&subset=cyrillic" rel="stylesheet">
+
+  <!-- Flags -->
+  <link rel="stylesheet" href="assets/flags/flags.min.css">
+
+  <!-- Default theme --> 
+  <!-- <link rel="stylesheet" href="//unpkg.com/docsify/themes/vue.css"> -->
+  <!-- <link rel="stylesheet" href="//unpkg.com/docsify/themes/buble.css"> -->
+  <!-- <link rel="stylesheet" href="//unpkg.com/docsify/themes/dark.css"> -->
+  <!-- <link rel="stylesheet" href="//unpkg.com/docsify/themes/pure.css"> -->
+
+  <!-- 1. Theme -->
+  <link rel="stylesheet" href="https://unpkg.com/docsify-themeable/dist/css/theme-simple.css">
+  <!-- <link rel="stylesheet" href="https://unpkg.com/docsify-themeable/dist/css/theme-simple-dark.css"> -->
+  <!-- <link rel="stylesheet" href="https://unpkg.com/docsify-themeable/dist/css/theme-defaults.css"> -->
+
+  <!-- 2. PrismJS Themes -->
+  <!-- <link rel="styvlesheet" href="https://unpkg.com/prism-github/prism-github.css"> -->
+  <!-- <link rel="stylesheet" href="https://unpkg.com/prism-theme-one-dark/prism-onedark.css"> -->
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <style>
+  
+  body {
+    font-size: 16px;
+    font-family: 'Ubuntu', sans-serif;
+    /*line-height: 1.7;*/
+  }
+
+  .app-name-link {
+    background: url(logo.svg) left center no-repeat;
+    background-size: 30px;
+    padding-left: 40px;
+    line-height: 30px;
+    height: 30px;
+    display: inline-block;
+    color: #303133 !important;
+  }
+
+  .markdown-section a {
+    font-weight: 500;
+  }
+
+  .sidebar ul li.active > a {
+    font-weight: 400;
+  }
+
+  .sidebar li > p {
+    font-weight: 400;
+    color: #909090;
+  }
+
+  /*.search {
+    position: absolute;
+    width: 100%;
+    top: 70px;
+    border-top: 1px solid #EEEEEE;
+    z-index: 10;
+    background-color: #FFFFFF;
+  }
+
+  .sidebar > h1 {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100%;
+  }
+
+  .sidebar-nav {
+    position: absolute;
+    width: 100%;
+    top: 130px;
+    }*/
+
+
+    :root {
+
+      /* Theme */
+      /*--theme-color                         : #303133;*/
+
+      /* Base */
+      /*--base-background-color               : #fff;*/
+      /*--base-color                          : #303133;*/
+      --base-font-weight                    : 400;
+      --base-letter-spacing                 : 0;
+      --base-line-height                    : 1.7;
+
+      /* Borders */
+      --border-radius-s                     : 2px;
+      --border-radius-m                     : 4px;
+      --border-radius-l                     : 4px;
+
+      /* Sidebar */
+      --sidebar-nav-link-font-weight--active: 400;
+      --sidebar-width: 320px;
+
+      /* Name */
+      --sidebar-name-margin                 : 1.5rem 0 0 0;
+      --sidebar-name-padding                : 0;
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app"></div>
+  <script>
+
+    // 4. Docsify Configuration
+    window.$docsify = {
+      routerMode: 'hash',
+      name: 'Документация',
+      // logo: 'logo.svg',
+      loadNavbar: true,
+      autoHeader: true,
+      loadSidebar: true,
+      auto2top   : true,
+      maxLevel   : 3,
+      subMaxLevel: 3,
+      themeable : { 
+        readyTransition : false, 
+        responsiveTables: true
+      },
+      search: {
+        maxAge: 86400000,
+        paths: 'auto',
+        placeholder: {
+          '/': 'Введи для поиска'
+        },
+        noData: {
+          '/': 'Нет результатов'
+        }
+      },
+      pagination: {
+        previousText: 'НАЗАД',
+        nextText: 'ВПЕРЕД',
+      },
+    };
+
+  </script>
+  <!-- Required: docsify + docsify-themeable -->
+  <script src="https://unpkg.com/docsify/lib/docsify.min.js"></script>
+  <!-- <script src="https://unpkg.com/docsify-themeable"></script> -->
+
+  <!-- 6. Docsify Plugins -->
+  <script src="https://unpkg.com/docsify/lib/plugins/search.js"></script>
+  <script src="https://unpkg.com/docsify-copy-code"></script>
+  <script src="https://unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <script src="https://unpkg.com/docsify/lib/plugins/zoom-image.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+  <script type="text/javascript">
+
+    function iframeLoaded() {
+      $('#swag').height($('#swag').contents().height() + 10);
+    }
+
+  </script>
+
+  <!-- Chatra {literal} -->
+  <script>
+    (function(d, w, c) {
+      w.ChatraID = '5WriCzPNaTBR4dSED';
+      var s = d.createElement('script');
+      w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+      };
+      s.async = true;
+      s.src = (d.location.protocol === 'https:' ? 'https:': 'http:')
+      + '//call.chatra.io/chatra.js';
+      if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+  </script>
+  <!-- /Chatra {/literal} -->
+
+</body>
+
+</html>

@@ -1,0 +1,360 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.5.1",
+    "title": "REST API SMTP.BZ"
+  },
+  "host": "api.smtp.bz",
+  "basePath": "/v1",
+  "tags": [
+    {
+      "name": "User",
+      "description": "Данные о пользователи"
+    },
+    {
+      "name": "Log",
+      "description": "Данные по письмам (журнал)"
+    },
+    {
+      "name": "SMTP",
+      "description": "Отправка писем"
+    },
+    {
+      "name": "Check",
+      "description": "Валидация Email"
+    }
+  ],
+  "security": [
+    {
+      "Bearer": []
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/user": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Данные о пользователи",
+        "operationId": "getUserData",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    },
+    "/user/stats": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Статистика по рассылкам",
+        "operationId": "getUserStats",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    },
+    "/user/domain": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Домены пользователя",
+        "operationId": "getUserDomains",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    },
+    "/user/domain/{domain}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Домен пользователя",
+        "operationId": "getUserDomain",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "path",
+            "description": "Домен",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          },
+          "400": {
+            "description": "Имя домена не корректно"
+          },
+          "404": {
+            "description": "Домен не найден"
+          }
+        }
+      }
+    },
+    "/user/ip": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "IP-адреса пользователя",
+        "operationId": "getUserIps",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          },
+          "400": {
+            "description": "IP-адреса не найдены"
+          }
+        }
+      }
+    },
+    "/user/ip/{ip}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "IP-адрес пользователя",
+        "operationId": "getUserIp",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "ip",
+            "in": "path",
+            "description": "IP-адрес",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          },
+          "400": {
+            "description": "IP-адрес не корретный"
+          },
+          "404": {
+            "description": "IP-адрес не найден"
+          }
+        }
+      }
+    },
+    "/log/message": {
+      "get": {
+        "tags": [
+          "Log"
+        ],
+        "summary": "Получить отправленные письма",
+        "operationId": "getMessages",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "integer",
+            "description": "Кол-во строк возврата"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer",
+            "description": "Шаг (пагинация)"
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "string",
+            "description": "Email отправителя"
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "string",
+            "description": "Email получаателя"
+          },
+          {
+            "name": "is_open",
+            "in": "query",
+            "type": "boolean",
+            "description": "Открытые письма"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          },
+          "404": {
+            "description": "Отправленнын письма не найдены"
+          }
+        }
+      }
+    },
+    "/log/message/{messageid}": {
+      "get": {
+        "tags": [
+          "Log"
+        ],
+        "summary": "Получить отправленное письмо по ID",
+        "operationId": "getMessage",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "messageid",
+            "in": "path",
+            "description": "ID письма",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          },
+          "400": {
+            "description": "MessageId указан не корректно"
+          },
+          "404": {
+            "description": "Письмо не найдено"
+          }
+        }
+      }
+    },
+    "/smtp/send": {
+      "post": {
+        "tags": [
+          "SMTP"
+        ],
+        "summary": "Отправка письма",
+        "operationId": "smtpSend",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "from",
+            "type": "string",
+            "required": true,
+            "description": "Email отправителя"
+          },
+          {
+            "in": "formData",
+            "name": "name",
+            "type": "string",
+            "description": "Имя отправителя"
+          },
+          {
+            "in": "formData",
+            "name": "subject",
+            "type": "string",
+            "required": true,
+            "description": "Тема письма"
+          },
+          {
+            "in": "formData",
+            "name": "to",
+            "type": "string",
+            "required": true,
+            "description": "Email получателя"
+          },
+          {
+            "in": "formData",
+            "name": "reply-to",
+            "type": "string",
+            "description": "Email для ответа"
+          },
+          {
+            "in": "formData",
+            "name": "html",
+            "type": "string",
+            "required": true,
+            "description": "HTML-версия письма"
+          },
+          {
+            "in": "formData",
+            "name": "txt",
+            "type": "string",
+            "description": "TXT-версия письма"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          },
+          "400": {
+            "description": "Один или несколько агументов указаны не корреткно"
+          }
+        }
+      }
+    },
+    "/check/email/{email}": {
+      "get": {
+        "tags": [
+          "Check"
+        ],
+        "summary": "Валидация Email-адреса",
+        "operationId": "checkEmail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "description": "Email-адерес для проверки",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          },
+          "400": {
+            "description": "Email-адрес указан не корректно"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  }
+}
